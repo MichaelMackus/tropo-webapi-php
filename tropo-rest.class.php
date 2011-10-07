@@ -184,7 +184,11 @@ class ProvisioningAPI extends RestBase {
 	 */
 	public function viewAddresses($applicationID) {
 		
-		$url = self::ProvisioningURLBase.'applications/'.$applicationID.'/addresses';
+		if ($applicationID)
+			$url = self::ApplicationProvisioningURLBase.'applications/'.$applicationID.'/addresses';
+		else
+			$url = self::ApplicationProvisioningURLBase.'addresses';
+
 		return self::makeAPICall('GET', $url);
 		
 	}
